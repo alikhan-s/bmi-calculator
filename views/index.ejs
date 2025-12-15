@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator Assignment</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>BMI Calculator</h1>
+
+    <% if (error) { %>
+        <div class="alert error">
+            <%= error %>
+        </div>
+    <% } %>
+
+    <form action="/calculate-bmi" method="POST">
+        <div class="form-group">
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" name="weight" step="0.1" placeholder="e.g., 70" required>
+        </div>
+
+        <div class="form-group">
+            <label for="height">Height (m):</label>
+            <input type="number" id="height" name="height" step="0.01" placeholder="e.g., 1.75" required>
+        </div>
+
+        <button type="submit">Calculate BMI</button>
+    </form>
+
+    <% if (bmi) { %>
+        <div class="result-box">
+            <h2>Your BMI: <%= bmi %></h2>
+
+            <p class="category-text <%= category.toLowerCase() %>">
+                Category: <strong><%= category %></strong>
+            </p>
+        </div>
+    <% } %>
+
+</div>
+
+</body>
+</html>
